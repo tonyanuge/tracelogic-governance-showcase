@@ -2,7 +2,7 @@
 
 This directory is intended to hold **redacted screenshots** of the TraceLogic operator and manager experience, taken from the pilot environment with synthetic data only.
 
-> **The screenshot files themselves are not included in this commit.** This README documents what should be captured, the redaction rules that apply, and the captions to use when the screenshots are added. This avoids accidentally publishing real or partially-real UI captures into a public repository before they are properly reviewed.
+> **This directory contains a curated set of redacted screenshots that illustrate the TraceLogic controlled mortgage pilot lifecycle using synthetic or approved test data only.** This README documents what should be captured, the redaction rules that apply, and the captions to use when the screenshots are added. This avoids accidentally publishing real or partially-real UI captures into a public repository before they are properly reviewed.
 
 ## How to capture a screenshot for this repository
 
@@ -17,15 +17,17 @@ Every screenshot in this directory must satisfy **all** of the following rules:
 7. **Browser chrome cleanup.** Close password managers, hide bookmarks bar, close other tabs, hide auto-fill suggestions.
 8. **Profile cleanup.** The logged-in user's name and email in the header should be a synthetic operator / manager identity (`operator@example.invalid`, `manager@example.invalid`), not a real identity.
 
-## Files this directory should eventually contain
+## Files included in this directory
 
-| File | What it should show | Caption |
+| File | What it shows | Caption |
 |---|---|---|
-| `intake.png` | The RAG-assisted intake screen with a synthetic SFS uploaded and the operator confirming the extracted fields | "Operator confirms extracted fields from a synthetic Standard Financial Statement. Retrieval-augmented intake assists; the operator remains responsible for the data." |
-| `manager-review.png` | The manager review queue with the governed artifact open and approve / return controls visible | "Manager review of the governed artifact, with the rule path, boundary analysis, and audit fields visible. The user reviewing is different from the user who created the proposal." |
-| `execution-gate.png` | The execution screen on a case where execution is blocked because borrower acceptance / Insolvency Service of Ireland confirmation is missing | "The proposal-governance gate blocks execution because borrower acceptance and ISI confirmation have not been captured. The decision is technically approved but execution is held until the proposal evidence is complete." |
-| `replay.png` | The replay output for a closed synthetic case, showing original-vs-replay comparison and a 'no drift' classification | "Replay against the artifact's frozen evidence. The original decision and the replay re-run produced the same outcome. Drift classification: none." |
-| `trust-dashboard.png` | The trust dashboard showing artifact status, evidence coverage, replay coverage, and policy provenance | "Trust dashboard surfaces artifact status, evidence coverage, replay coverage, and policy provenance. Values shown are sourced from backend evidence." |
+| `01-case-intake.png` | RAG-assisted intake and structured case capture using synthetic mortgage data | "Operator reviews extracted case fields from synthetic mortgage evidence. Retrieval-augmented intake assists the process, while the operator remains responsible for confirming the data." |
+| `02-decision-review.png` | Decision review, decision outcome, and before-and-after comparison | "Decision review presents the governed outcome in business language, including the proposed treatment impact before the case proceeds to governance review." |
+| `03-policy-check-trail.png` | Readable policy check trail, decision considerations, breaches, hard stops, and next step | "Policy checks are displayed as a readable trail so reviewers can see which conditions passed, which issues were recorded, and what action is required next." |
+| `04-manager-review.png` | Manager governance review with approval controls and Separation of Duties message | "Manager review of the governed artifact, with Separation of Duties enforced so the approving user cannot be the same user who submitted the decision." |
+| `05-execution-gate.png` | Execution gate with governance integrity and token handoff shown in redacted form | "Execution is controlled through a governed gate. Approval, attestation, token handoff, and integrity checks are required before operational execution." |
+| `06-evidence-replay.png` | Evidence replay showing frozen decision evidence and before-and-after comparison | "Replay reconstructs the decision from stored evidence, showing the decision state, policy context, execution status, and before-and-after comparison." |
+| `07-trust-dashboard.png` | Trust Dashboard showing governance posture and audit coverage | "Trust Dashboard provides a business-readable view of governance posture, audit coverage, replay status, tenant isolation, and policy version visibility." |
 
 ## Redaction guidance
 
