@@ -1,0 +1,100 @@
+{
+  "_synthetic_data_disclaimer": "This is a synthetic illustrative case. All values are fictional. Not for production use. Not derived from real customer data.",
+
+  "case_metadata": {
+    "case_id": "SYN-MORT-0003",
+    "case_type": "term_extension",
+    "jurisdiction": "IE",
+    "policy_mode": "internal",
+    "submission_timestamp": "2026-05-02T09:15:33Z",
+    "submitted_by_role": "operator",
+    "synthetic": true
+  },
+
+  "borrower": {
+    "name": "Sam Walsh",
+    "vulnerability_flag": false,
+    "engagement_status": "cooperating",
+    "preferred_contact_method": "post"
+  },
+
+  "loan_state": {
+    "account_reference": "SYN-MORT-0003",
+    "lender": "Generic Lender plc",
+    "current_balance_eur": 165000,
+    "monthly_repayment_eur": 1110,
+    "current_rate_pct": 4.20,
+    "remaining_term_months": 180,
+    "borrower_age_at_term_end_years": 67,
+    "borrower_age_at_proposed_term_end_years": 71,
+    "maturity_date": "2041-05-02",
+    "arrears_balance_eur": 0,
+    "in_marp": true,
+    "marp_step": "step_3_resolution"
+  },
+
+  "proposed_treatment": {
+    "treatment_type": "term_extension",
+    "additional_term_months": 48,
+    "proposed_remaining_term_months": 228,
+    "post_modification_payment_eur": 945,
+    "rationale": "Borrower remains affordable for the current rate but requires a lower monthly outflow. Term extension reduces the monthly repayment without other capital changes."
+  },
+
+  "standard_financial_statement": {
+    "monthly_net_income_eur": 2950,
+    "monthly_essential_outgoings_eur": 1980,
+    "monthly_disposable_income_eur": 970,
+    "current_payment_to_income_ratio_pct": 37.6,
+    "post_modification_payment_to_income_ratio_pct": 32.0,
+    "sfs_date": "2026-04-28"
+  },
+
+  "expected_evaluation_summary": {
+    "_note": "This is what TraceLogic's deterministic engine would produce for this case. Provided for illustration only.",
+    "expected_outcome": "NEEDS_OVERRIDE",
+    "expected_rule_path_excerpt": [
+      "term_extension:within_soft_limit",
+      "term_extension:within_hard_limit",
+      "term_extension:age_at_term_end_above_soft_threshold",
+      "affordability:sfs_present",
+      "affordability:post_mod_pti_within_threshold",
+      "marp:step_appropriate"
+    ],
+    "expected_boundary_analysis_excerpt": [
+      {
+        "rule": "term_extension_soft_limit_months",
+        "actual_value": 48,
+        "threshold_value": 60,
+        "distance_to_threshold": 12,
+        "proximity_flag": "GREEN"
+      },
+      {
+        "rule": "borrower_age_at_term_end_soft_limit_years",
+        "actual_value": 71,
+        "threshold_value": 70,
+        "distance_to_threshold": -1,
+        "proximity_flag": "AMBER"
+      },
+      {
+        "rule": "post_modification_pti_threshold",
+        "actual_value": 32.0,
+        "threshold_value": 40.0,
+        "distance_to_threshold": 8.0,
+        "proximity_flag": "GREEN"
+      }
+    ],
+    "expected_breaches": [
+      "borrower_age_at_term_end_above_soft_threshold"
+    ],
+    "expected_hard_stops": []
+  },
+
+  "lifecycle_status": "PENDING_REVIEW",
+
+  "governance_notes": [
+    "This case demonstrates a `NEEDS_OVERRIDE` outcome: the soft age threshold is breached and a manager review is required.",
+    "Soft thresholds carry a breach record but do not automatically reject. They surface to the manager as an explicit consideration.",
+    "Hard thresholds (not breached here) would carry hard-stop records that prevent approval entirely."
+  ]
+}

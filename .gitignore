@@ -1,0 +1,15 @@
+﻿# Windows
+Thumbs.db
+Desktop.ini
+
+# Office temporary files
+~$*.docx
+~$*.xlsx
+~$*.pptx
+
+# System files
+.DS_Store
+
+# Temporary folders
+temp/
+tmp/

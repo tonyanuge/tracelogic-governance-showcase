@@ -1,0 +1,101 @@
+{
+  "_synthetic_data_disclaimer": "This is a synthetic illustrative case. All values are fictional. Not for production use. Not derived from real customer data.",
+
+  "case_metadata": {
+    "case_id": "SYN-MORT-0002",
+    "case_type": "arrears_capitalisation",
+    "jurisdiction": "IE",
+    "policy_mode": "internal",
+    "submission_timestamp": "2026-04-22T14:08:51Z",
+    "submitted_by_role": "operator",
+    "synthetic": true
+  },
+
+  "borrower": {
+    "name": "Pat Kennedy",
+    "vulnerability_flag": false,
+    "engagement_status": "cooperating",
+    "preferred_contact_method": "email"
+  },
+
+  "loan_state": {
+    "account_reference": "SYN-MORT-0002",
+    "lender": "Generic Lender plc",
+    "current_balance_eur": 198000,
+    "monthly_repayment_eur": 985,
+    "current_rate_pct": 3.85,
+    "remaining_term_months": 264,
+    "maturity_date": "2048-04-22",
+    "arrears_balance_eur": 4200,
+    "arrears_age_months": 6,
+    "in_marp": true,
+    "marp_step": "step_3_resolution",
+    "previous_capitalisation_count": 0,
+    "active_balance": false,
+    "warehouse_balance_eur": 0
+  },
+
+  "proposed_treatment": {
+    "treatment_type": "arrears_capitalisation",
+    "capitalisation_amount_eur": 4200,
+    "post_capitalisation_balance_eur": 202200,
+    "post_capitalisation_payment_eur": 1015,
+    "post_capitalisation_term_months": 264,
+    "rationale": "Borrower has cleared the underlying affordability shortfall and can meet a slightly higher monthly repayment. Capitalising the arrears restores a clean payment schedule."
+  },
+
+  "standard_financial_statement": {
+    "monthly_net_income_eur": 3800,
+    "monthly_essential_outgoings_eur": 2350,
+    "monthly_disposable_income_eur": 1450,
+    "current_payment_to_income_ratio_pct": 25.9,
+    "post_modification_payment_to_income_ratio_pct": 26.7,
+    "sfs_date": "2026-04-19"
+  },
+
+  "expected_evaluation_summary": {
+    "_note": "This is what TraceLogic's deterministic engine would produce for this case. Provided for illustration only.",
+    "expected_outcome": "APPROVE",
+    "expected_rule_path_excerpt": [
+      "capitalisation:no_active_warehouse_balance",
+      "capitalisation:cap_amount_does_not_exceed_arrears",
+      "capitalisation:not_stacked_within_24_months",
+      "affordability:sfs_present",
+      "affordability:post_mod_pti_within_threshold",
+      "marp:step_appropriate"
+    ],
+    "expected_boundary_analysis_excerpt": [
+      {
+        "rule": "post_modification_pti_threshold",
+        "actual_value": 26.7,
+        "threshold_value": 40.0,
+        "distance_to_threshold": 13.3,
+        "proximity_flag": "GREEN"
+      },
+      {
+        "rule": "capitalisation_amount_vs_arrears",
+        "actual_value": 4200,
+        "threshold_value": 4200,
+        "distance_to_threshold": 0,
+        "proximity_flag": "AMBER"
+      },
+      {
+        "rule": "anti_stacking_window_months",
+        "actual_value": 0,
+        "threshold_value": 24,
+        "distance_to_threshold": 24,
+        "proximity_flag": "GREEN"
+      }
+    ],
+    "expected_breaches": [],
+    "expected_hard_stops": []
+  },
+
+  "lifecycle_status": "PENDING_REVIEW",
+
+  "governance_notes": [
+    "Anti-stacking rule blocks consecutive capitalisations within a defined window — important for borrower protection.",
+    "Warehouse-aware logic: when an active warehouse balance exists, capitalisation behaviour changes.",
+    "The boundary analysis surfaces every numeric comparison; the operator and manager can see exactly how each threshold was tested."
+  ]
+}

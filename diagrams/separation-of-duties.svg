@@ -1,0 +1,166 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 720" font-family="Inter, system-ui, -apple-system, Segoe UI, sans-serif">
+  <defs>
+    <marker id="arrSod" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto">
+      <path d="M0,0 L10,5 L0,10 Z" fill="#1f2937"/>
+    </marker>
+    <marker id="arrSodNo" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto">
+      <path d="M0,0 L10,5 L0,10 Z" fill="#dc2626"/>
+    </marker>
+  </defs>
+
+  <style>
+    .title { font-size: 22px; font-weight: 600; fill: #111827; }
+    .subtitle { font-size: 13px; fill: #6b7280; }
+    .h2 { font-size: 14px; font-weight: 600; fill: #111827; }
+    .role-name { font-size: 16px; font-weight: 700; fill: #111827; }
+    .role-detail { font-size: 11px; fill: #4b5563; }
+    .body { font-size: 12px; fill: #374151; }
+    .footer { font-size: 11px; fill: #6b7280; }
+    .lane-op { fill: #fef3c7; stroke: #b45309; }
+    .lane-mgr { fill: #dbeafe; stroke: #2563eb; }
+    .lane-rev { fill: #e0e7ff; stroke: #4f46e5; }
+    .lane-adm { fill: #f3e8ff; stroke: #7c3aed; }
+    .stage-tile { fill: #ffffff; stroke: #1f2937; stroke-width: 1; }
+    .stage-tile-blocked { fill: #fef2f2; stroke: #dc2626; stroke-width: 1; }
+    .blocked-text { fill: #b91c1c; font-weight: 600; font-size: 11px; }
+    .sod-box { fill: #fef2f2; stroke: #dc2626; stroke-width: 2; }
+  </style>
+
+  <!-- Title -->
+  <text x="40" y="40" class="title">TraceLogic — Separation of Duties Across the Lifecycle</text>
+  <text x="40" y="62" class="subtitle">Operator, manager, reviewer, and admin — each role has a defined window of authority. The creator cannot self-attest.</text>
+
+  <!-- Stage column headers -->
+  <text x="295" y="120" class="h2" text-anchor="middle">Submit</text>
+  <text x="430" y="120" class="h2" text-anchor="middle">Propose</text>
+  <text x="565" y="120" class="h2" text-anchor="middle">Review</text>
+  <text x="700" y="120" class="h2" text-anchor="middle">Attest</text>
+  <text x="835" y="120" class="h2" text-anchor="middle">Execute</text>
+  <text x="970" y="120" class="h2" text-anchor="middle">Replay</text>
+
+  <!-- ===== Operator lane ===== -->
+  <rect x="40" y="140" width="200" height="100" rx="8" class="lane-op"/>
+  <text x="60" y="170" class="role-name">Operator</text>
+  <text x="60" y="190" class="role-detail">Creates the case</text>
+  <text x="60" y="206" class="role-detail">Submits for evaluation</text>
+  <text x="60" y="222" class="role-detail">Authorises execution</text>
+
+  <rect x="250" y="160" width="90" height="60" rx="4" class="stage-tile"/>
+  <text x="295" y="195" text-anchor="middle" class="body">✓</text>
+
+  <rect x="385" y="160" width="90" height="60" rx="4" class="stage-tile"/>
+  <text x="430" y="195" text-anchor="middle" class="body">✓</text>
+
+  <rect x="520" y="160" width="90" height="60" rx="4" class="stage-tile-blocked"/>
+  <text x="565" y="190" text-anchor="middle" class="blocked-text">blocked</text>
+  <text x="565" y="206" text-anchor="middle" class="blocked-text" font-size="9">(role)</text>
+
+  <rect x="655" y="160" width="90" height="60" rx="4" class="stage-tile-blocked"/>
+  <text x="700" y="190" text-anchor="middle" class="blocked-text">blocked</text>
+  <text x="700" y="206" text-anchor="middle" class="blocked-text" font-size="9">(role + SoD)</text>
+
+  <rect x="790" y="160" width="90" height="60" rx="4" class="stage-tile"/>
+  <text x="835" y="195" text-anchor="middle" class="body">✓</text>
+
+  <rect x="925" y="160" width="90" height="60" rx="4" class="stage-tile"/>
+  <text x="970" y="195" text-anchor="middle" class="body">✓</text>
+
+  <!-- ===== Manager lane ===== -->
+  <rect x="40" y="260" width="200" height="100" rx="8" class="lane-mgr"/>
+  <text x="60" y="290" class="role-name">Manager</text>
+  <text x="60" y="310" class="role-detail">Reviews artifact</text>
+  <text x="60" y="326" class="role-detail">Attests approval</text>
+  <text x="60" y="342" class="role-detail">May execute (per role)</text>
+
+  <rect x="250" y="280" width="90" height="60" rx="4" class="stage-tile-blocked"/>
+  <text x="295" y="315" text-anchor="middle" class="blocked-text">blocked</text>
+
+  <rect x="385" y="280" width="90" height="60" rx="4" class="stage-tile-blocked"/>
+  <text x="430" y="315" text-anchor="middle" class="blocked-text">blocked</text>
+
+  <rect x="520" y="280" width="90" height="60" rx="4" class="stage-tile"/>
+  <text x="565" y="315" text-anchor="middle" class="body">✓</text>
+
+  <rect x="655" y="280" width="90" height="60" rx="4" class="stage-tile"/>
+  <text x="700" y="310" text-anchor="middle" class="body">✓</text>
+  <text x="700" y="326" text-anchor="middle" class="role-detail" font-size="9">(if ≠ creator)</text>
+
+  <rect x="790" y="280" width="90" height="60" rx="4" class="stage-tile"/>
+  <text x="835" y="315" text-anchor="middle" class="body">✓</text>
+
+  <rect x="925" y="280" width="90" height="60" rx="4" class="stage-tile"/>
+  <text x="970" y="315" text-anchor="middle" class="body">✓</text>
+
+  <!-- ===== Reviewer lane ===== -->
+  <rect x="40" y="380" width="200" height="100" rx="8" class="lane-rev"/>
+  <text x="60" y="410" class="role-name">Reviewer</text>
+  <text x="60" y="430" class="role-detail">Reviews artifact</text>
+  <text x="60" y="446" class="role-detail">Attests approval</text>
+  <text x="60" y="462" class="role-detail">(does not create cases)</text>
+
+  <rect x="250" y="400" width="90" height="60" rx="4" class="stage-tile-blocked"/>
+  <text x="295" y="435" text-anchor="middle" class="blocked-text">blocked</text>
+
+  <rect x="385" y="400" width="90" height="60" rx="4" class="stage-tile-blocked"/>
+  <text x="430" y="435" text-anchor="middle" class="blocked-text">blocked</text>
+
+  <rect x="520" y="400" width="90" height="60" rx="4" class="stage-tile"/>
+  <text x="565" y="435" text-anchor="middle" class="body">✓</text>
+
+  <rect x="655" y="400" width="90" height="60" rx="4" class="stage-tile"/>
+  <text x="700" y="430" text-anchor="middle" class="body">✓</text>
+  <text x="700" y="446" text-anchor="middle" class="role-detail" font-size="9">(if ≠ creator)</text>
+
+  <rect x="790" y="400" width="90" height="60" rx="4" class="stage-tile"/>
+  <text x="835" y="435" text-anchor="middle" class="body">✓</text>
+
+  <rect x="925" y="400" width="90" height="60" rx="4" class="stage-tile"/>
+  <text x="970" y="435" text-anchor="middle" class="body">✓</text>
+
+  <!-- ===== Admin lane ===== -->
+  <rect x="40" y="500" width="200" height="100" rx="8" class="lane-adm"/>
+  <text x="60" y="530" class="role-name">Admin (assurance)</text>
+  <text x="60" y="550" class="role-detail">No lifecycle actions</text>
+  <text x="60" y="566" class="role-detail">Replay + audit access</text>
+  <text x="60" y="582" class="role-detail">Operates on past records</text>
+
+  <rect x="250" y="520" width="90" height="60" rx="4" class="stage-tile-blocked"/>
+  <text x="295" y="555" text-anchor="middle" class="blocked-text">—</text>
+
+  <rect x="385" y="520" width="90" height="60" rx="4" class="stage-tile-blocked"/>
+  <text x="430" y="555" text-anchor="middle" class="blocked-text">—</text>
+
+  <rect x="520" y="520" width="90" height="60" rx="4" class="stage-tile-blocked"/>
+  <text x="565" y="555" text-anchor="middle" class="blocked-text">—</text>
+
+  <rect x="655" y="520" width="90" height="60" rx="4" class="stage-tile-blocked"/>
+  <text x="700" y="555" text-anchor="middle" class="blocked-text">—</text>
+
+  <rect x="790" y="520" width="90" height="60" rx="4" class="stage-tile-blocked"/>
+  <text x="835" y="555" text-anchor="middle" class="blocked-text">—</text>
+
+  <rect x="925" y="520" width="90" height="60" rx="4" class="stage-tile"/>
+  <text x="970" y="555" text-anchor="middle" class="body">✓</text>
+
+  <!-- The SoD callout box -->
+  <rect x="1030" y="170" width="160" height="250" rx="8" class="sod-box"/>
+  <text x="1110" y="200" text-anchor="middle" class="h2" fill="#b91c1c" font-size="13">Separation of Duties</text>
+  <text x="1110" y="220" text-anchor="middle" class="body" fill="#7f1d1d">at the attest step</text>
+  <line x1="1050" y1="230" x2="1170" y2="230" stroke="#dc2626" stroke-width="1"/>
+  <text x="1110" y="254" text-anchor="middle" class="body" font-size="11" fill="#7f1d1d">The user attesting</text>
+  <text x="1110" y="270" text-anchor="middle" class="body" font-size="11" fill="#7f1d1d">cannot be the user</text>
+  <text x="1110" y="286" text-anchor="middle" class="body" font-size="11" fill="#7f1d1d">who created the proposal.</text>
+  <text x="1110" y="316" text-anchor="middle" class="body" font-size="11" fill="#7f1d1d">Enforced at the</text>
+  <text x="1110" y="332" text-anchor="middle" class="body" font-size="11" fill="#7f1d1d">application layer,</text>
+  <text x="1110" y="348" text-anchor="middle" class="body" font-size="11" fill="#7f1d1d">not by convention.</text>
+  <text x="1110" y="380" text-anchor="middle" class="body" font-size="11" font-weight="600" fill="#7f1d1d">409 Conflict if violated.</text>
+
+  <!-- Footer notes -->
+  <line x1="60" y1="625" x2="1140" y2="625" stroke="#e5e7eb" stroke-width="1"/>
+  <text x="60" y="650" class="footer">Legend: ✓ allowed for this role at this lifecycle step. "blocked (role)" means the role does not have access. "blocked (role + SoD)" means access is also</text>
+  <text x="60" y="666" class="footer">restricted by separation of duties. "—" means the role does not participate in lifecycle actions. Replay is open to authenticated users per role policy.</text>
+  <text x="60" y="686" class="footer" font-style="italic">Pilot-stage. Role + permission matrix is recommended next-step documentation per the Documentation Pack Index.</text>
+
+  <text x="60" y="710" class="footer" font-style="italic">tracelogic-governance-showcase / diagrams / separation-of-duties.svg</text>
+</svg>

@@ -1,0 +1,88 @@
+{
+  "_synthetic_data_disclaimer": "This is a synthetic illustrative case. All values are fictional. Not for production use. Not derived from real customer data.",
+
+  "case_metadata": {
+    "case_id": "SYN-MORT-0001",
+    "case_type": "loan_modification",
+    "jurisdiction": "IE",
+    "policy_mode": "internal",
+    "submission_timestamp": "2026-04-15T10:23:14Z",
+    "submitted_by_role": "operator",
+    "synthetic": true
+  },
+
+  "borrower": {
+    "name": "Alex Morgan",
+    "vulnerability_flag": false,
+    "engagement_status": "cooperating",
+    "preferred_contact_method": "post"
+  },
+
+  "loan_state": {
+    "account_reference": "SYN-MORT-0001",
+    "lender": "Generic Lender plc",
+    "current_balance_eur": 245000,
+    "monthly_repayment_eur": 1280,
+    "current_rate_pct": 4.65,
+    "remaining_term_months": 240,
+    "maturity_date": "2046-04-15",
+    "arrears_balance_eur": 1840,
+    "arrears_age_months": 2,
+    "in_marp": true,
+    "marp_step": "step_3_resolution"
+  },
+
+  "proposed_treatment": {
+    "treatment_type": "standard_rate_reduction",
+    "proposed_rate_pct": 3.95,
+    "duration_months": 24,
+    "rationale": "Borrower has demonstrated affordability difficulty due to short-term income reduction. Standard rate reduction is intended to restore affordability without material change to capital structure."
+  },
+
+  "standard_financial_statement": {
+    "monthly_net_income_eur": 3120,
+    "monthly_essential_outgoings_eur": 1850,
+    "monthly_disposable_income_eur": 1270,
+    "current_payment_to_income_ratio_pct": 41.0,
+    "post_modification_payment_to_income_ratio_pct": 36.5,
+    "sfs_date": "2026-04-10"
+  },
+
+  "expected_evaluation_summary": {
+    "_note": "This is what TraceLogic's deterministic engine would produce for this case. Provided for illustration only.",
+    "expected_outcome": "APPROVE",
+    "expected_rule_path_excerpt": [
+      "rate_reduction:within_minimum_floor",
+      "rate_reduction:duration_within_max",
+      "affordability:sfs_present",
+      "affordability:post_mod_pti_within_threshold",
+      "marp:step_appropriate"
+    ],
+    "expected_boundary_analysis_excerpt": [
+      {
+        "rule": "post_modification_pti_threshold",
+        "actual_value": 36.5,
+        "threshold_value": 40.0,
+        "distance_to_threshold": 3.5,
+        "proximity_flag": "GREEN"
+      },
+      {
+        "rule": "rate_floor",
+        "actual_value": 3.95,
+        "threshold_value": 3.50,
+        "distance_to_threshold": 0.45,
+        "proximity_flag": "GREEN"
+      }
+    ],
+    "expected_breaches": [],
+    "expected_hard_stops": []
+  },
+
+  "lifecycle_status": "PENDING_REVIEW",
+
+  "governance_notes": [
+    "Decision artifact would be built at submission time and carry an integrity stamp.",
+    "Manager review and attestation are required before any execution token is minted.",
+    "Replay would be available against the evidence captured at decision time."
+  ]
+}

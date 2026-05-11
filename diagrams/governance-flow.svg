@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 720" font-family="Inter, system-ui, -apple-system, Segoe UI, sans-serif">
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto">
+      <path d="M0,0 L10,5 L0,10 Z" fill="#1f2937"/>
+    </marker>
+    <marker id="arrowDashed" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto">
+      <path d="M0,0 L10,5 L0,10 Z" fill="#6b7280"/>
+    </marker>
+  </defs>
+
+  <style>
+    .title { font-size: 22px; font-weight: 600; fill: #111827; }
+    .subtitle { font-size: 13px; fill: #6b7280; }
+    .stage-label { font-size: 14px; font-weight: 600; fill: #111827; }
+    .role-label { font-size: 11px; fill: #6b7280; font-style: italic; }
+    .effect-label { font-size: 11px; fill: #374151; }
+    .footer { font-size: 11px; fill: #6b7280; }
+    .stage-box { fill: #ffffff; stroke: #1f2937; stroke-width: 1.5; }
+    .stage-box-key { fill: #fef3c7; stroke: #b45309; stroke-width: 2; }
+    .annotation { font-size: 11px; fill: #b45309; font-style: italic; }
+  </style>
+
+  <!-- Title -->
+  <text x="40" y="40" class="title">TraceLogic — Decision Governance Flow</text>
+  <text x="40" y="62" class="subtitle">submit → propose → review → attest → token mint → execute → replay</text>
+
+  <!-- Lifecycle stages -->
+  <!-- Stage 1: Submit -->
+  <rect x="40" y="120" width="140" height="80" rx="8" class="stage-box"/>
+  <text x="110" y="150" text-anchor="middle" class="stage-label">1. Submit</text>
+  <text x="110" y="170" text-anchor="middle" class="role-label">operator</text>
+  <text x="110" y="188" text-anchor="middle" class="effect-label">Run policy engine</text>
+
+  <!-- Stage 2: Propose -->
+  <rect x="220" y="120" width="140" height="80" rx="8" class="stage-box"/>
+  <text x="290" y="150" text-anchor="middle" class="stage-label">2. Propose</text>
+  <text x="290" y="170" text-anchor="middle" class="role-label">operator</text>
+  <text x="290" y="188" text-anchor="middle" class="effect-label">Build artifact, validate</text>
+
+  <!-- Stage 3: Review -->
+  <rect x="400" y="120" width="140" height="80" rx="8" class="stage-box"/>
+  <text x="470" y="150" text-anchor="middle" class="stage-label">3. Review</text>
+  <text x="470" y="170" text-anchor="middle" class="role-label">manager / reviewer</text>
+  <text x="470" y="188" text-anchor="middle" class="effect-label">Approve or return</text>
+
+  <!-- Stage 4: Attest (KEY STAGE) -->
+  <rect x="580" y="120" width="140" height="80" rx="8" class="stage-box-key"/>
+  <text x="650" y="150" text-anchor="middle" class="stage-label">4. Attest</text>
+  <text x="650" y="170" text-anchor="middle" class="role-label">manager / reviewer (≠ creator)</text>
+  <text x="650" y="188" text-anchor="middle" class="effect-label">Mint hash-bound token</text>
+
+  <!-- Stage 5: Token mint -->
+  <rect x="760" y="120" width="140" height="80" rx="8" class="stage-box"/>
+  <text x="830" y="150" text-anchor="middle" class="stage-label">5. Token</text>
+  <text x="830" y="170" text-anchor="middle" class="role-label">single-use, time-limited</text>
+  <text x="830" y="188" text-anchor="middle" class="effect-label">Hydrate panel</text>
+
+  <!-- Stage 6: Execute -->
+  <rect x="940" y="120" width="140" height="80" rx="8" class="stage-box"/>
+  <text x="1010" y="150" text-anchor="middle" class="stage-label">6. Execute</text>
+  <text x="1010" y="170" text-anchor="middle" class="role-label">authorised operator</text>
+  <text x="1010" y="188" text-anchor="middle" class="effect-label">Hash check; consume token</text>
+
+  <!-- Stage 7: Replay -->
+  <rect x="490" y="280" width="220" height="80" rx="8" class="stage-box-key"/>
+  <text x="600" y="310" text-anchor="middle" class="stage-label">7. Replay</text>
+  <text x="600" y="328" text-anchor="middle" class="role-label">authenticated user</text>
+  <text x="600" y="346" text-anchor="middle" class="effect-label">Re-run vs frozen evidence</text>
+
+  <!-- Arrows between stages -->
+  <line x1="180" y1="160" x2="216" y2="160" stroke="#1f2937" stroke-width="1.5" marker-end="url(#arrow)"/>
+  <line x1="360" y1="160" x2="396" y2="160" stroke="#1f2937" stroke-width="1.5" marker-end="url(#arrow)"/>
+  <line x1="540" y1="160" x2="576" y2="160" stroke="#1f2937" stroke-width="1.5" marker-end="url(#arrow)"/>
+  <line x1="720" y1="160" x2="756" y2="160" stroke="#1f2937" stroke-width="1.5" marker-end="url(#arrow)"/>
+  <line x1="900" y1="160" x2="936" y2="160" stroke="#1f2937" stroke-width="1.5" marker-end="url(#arrow)"/>
+
+  <!-- Replay arrow back from execute -->
+  <path d="M 1010 200 Q 1010 240 800 250 Q 700 256 700 280" stroke="#6b7280" stroke-width="1.5" stroke-dasharray="6 4" fill="none" marker-end="url(#arrowDashed)"/>
+  <text x="930" y="262" class="annotation" text-anchor="middle">replay any past decision</text>
+
+  <!-- Replay also possible from earlier states -->
+  <path d="M 470 200 Q 470 240 500 280" stroke="#6b7280" stroke-width="1.5" stroke-dasharray="6 4" fill="none" marker-end="url(#arrowDashed)"/>
+
+  <!-- Annotations -->
+  <text x="650" y="105" class="annotation" text-anchor="middle">SoD enforced: creator ≠ attester</text>
+  <text x="600" y="270" class="annotation" text-anchor="middle">replays from frozen evidence — no live API calls</text>
+
+  <!-- Eight Cores key -->
+  <rect x="40" y="430" width="1120" height="240" rx="8" fill="#f9fafb" stroke="#e5e7eb" stroke-width="1"/>
+  <text x="60" y="460" class="title" font-size="16">The eight governance cores exercised in this flow</text>
+
+  <text x="60" y="490" class="effect-label" font-size="12"><tspan font-weight="600">1.</tspan> Authenticated tenant isolation — at every route</text>
+  <text x="60" y="510" class="effect-label" font-size="12"><tspan font-weight="600">2.</tspan> Role-based access control — operator / manager / reviewer / admin</text>
+  <text x="60" y="530" class="effect-label" font-size="12"><tspan font-weight="600">3.</tspan> Deterministic policy evaluation — same inputs, same outputs</text>
+  <text x="60" y="550" class="effect-label" font-size="12"><tspan font-weight="600">4.</tspan> Immutable decision artifact — tamper-evident integrity stamp at build time</text>
+
+  <text x="610" y="490" class="effect-label" font-size="12"><tspan font-weight="600">5.</tspan> Manager review + attestation (separation of duties)</text>
+  <text x="610" y="510" class="effect-label" font-size="12"><tspan font-weight="600">6.</tspan> Single-use, time-limited execution tokens (hash-bound)</text>
+  <text x="610" y="530" class="effect-label" font-size="12"><tspan font-weight="600">7.</tspan> Proposal governance gate — execution readiness</text>
+  <text x="610" y="550" class="effect-label" font-size="12"><tspan font-weight="600">8.</tspan> Replay from frozen evidence — closed-loop assurance</text>
+
+  <!-- Footer -->
+  <line x1="60" y1="585" x2="1140" y2="585" stroke="#e5e7eb" stroke-width="1"/>
+  <text x="60" y="610" class="footer">Pilot stage — controlled mortgage pilot. Not certified. Not regulator-approved. Synthetic data only in demonstrations.</text>
+  <text x="60" y="630" class="footer">Solid arrows: lifecycle progression. Dashed arrows: replay paths from any past lifecycle state.</text>
+  <text x="60" y="650" class="footer">Highlighted stages (Attest, Replay) are the most distinctive controls relative to typical workflow tools.</text>
+
+  <!-- Title bar at very bottom -->
+  <text x="60" y="697" class="footer" font-style="italic">tracelogic-governance-showcase / diagrams / governance-flow.svg</text>
+</svg>

@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 720" font-family="Inter, system-ui, -apple-system, Segoe UI, sans-serif">
+  <defs>
+    <marker id="arrow2" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto">
+      <path d="M0,0 L10,5 L0,10 Z" fill="#1f2937"/>
+    </marker>
+    <marker id="arrowGreen" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto">
+      <path d="M0,0 L10,5 L0,10 Z" fill="#059669"/>
+    </marker>
+    <marker id="arrowRed" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto">
+      <path d="M0,0 L10,5 L0,10 Z" fill="#dc2626"/>
+    </marker>
+  </defs>
+
+  <style>
+    .title { font-size: 22px; font-weight: 600; fill: #111827; }
+    .subtitle { font-size: 13px; fill: #6b7280; }
+    .h2 { font-size: 14px; font-weight: 600; fill: #111827; }
+    .body { font-size: 12px; fill: #374151; }
+    .footer { font-size: 11px; fill: #6b7280; }
+    .box { fill: #ffffff; stroke: #1f2937; stroke-width: 1.5; }
+    .box-good { fill: #ecfdf5; stroke: #059669; stroke-width: 1.5; }
+    .box-bad { fill: #fef2f2; stroke: #dc2626; stroke-width: 1.5; }
+    .box-frozen { fill: #eff6ff; stroke: #2563eb; stroke-width: 2; }
+    .label-good { fill: #047857; font-weight: 600; }
+    .label-bad { fill: #b91c1c; font-weight: 600; }
+  </style>
+
+  <!-- Title -->
+  <text x="40" y="40" class="title">TraceLogic — Replay reads from frozen evidence, never from live systems</text>
+  <text x="40" y="62" class="subtitle">The single most important assurance property of the replay engine.</text>
+
+  <!-- Original decision (T0) -->
+  <rect x="40" y="120" width="240" height="160" rx="8" class="box"/>
+  <text x="60" y="148" class="h2">At decision time (T0)</text>
+  <text x="60" y="170" class="body">• Operator submits case</text>
+  <text x="60" y="190" class="body">• Policy engine evaluates</text>
+  <text x="60" y="210" class="body">• Manager reviews and attests</text>
+  <text x="60" y="230" class="body">• Artifact is built with all</text>
+  <text x="60" y="248" class="body">  evidence captured at T0</text>
+  <text x="60" y="266" class="body">• Integrity stamp computed</text>
+
+  <!-- Arrow to frozen evidence -->
+  <line x1="280" y1="200" x2="386" y2="200" stroke="#1f2937" stroke-width="1.5" marker-end="url(#arrow2)"/>
+  <text x="333" y="190" class="body" text-anchor="middle">stored as</text>
+
+  <!-- Frozen artifact (centre) -->
+  <rect x="390" y="120" width="240" height="160" rx="8" class="box-frozen"/>
+  <text x="410" y="148" class="h2" fill="#1e40af">Frozen artifact (T0 snapshot)</text>
+  <text x="410" y="172" class="body">• Inputs at T0</text>
+  <text x="410" y="190" class="body">• Policy version at T0</text>
+  <text x="410" y="208" class="body">• Rule path + boundary analysis</text>
+  <text x="410" y="226" class="body">• RAG-extracted evidence at T0</text>
+  <text x="410" y="244" class="body">• Reviewer + attester identity</text>
+  <text x="410" y="262" class="body">• Canonical hash</text>
+
+  <!-- Replay path (good) -->
+  <rect x="700" y="120" width="240" height="160" rx="8" class="box-good"/>
+  <text x="720" y="148" class="h2 label-good">Replay (allowed)</text>
+  <text x="720" y="172" class="body">Read from artifact store</text>
+  <text x="720" y="190" class="body">Read from case state store</text>
+  <text x="720" y="208" class="body">Re-run rule engine</text>
+  <text x="720" y="226" class="body">Re-run deterministic policy</text>
+  <text x="720" y="244" class="body">Compare to original outcome</text>
+  <text x="720" y="262" class="body">Classify drift (none/minor/...)</text>
+
+  <line x1="630" y1="200" x2="696" y2="200" stroke="#059669" stroke-width="1.5" marker-end="url(#arrowGreen)"/>
+
+  <!-- Live systems (NOT used) -->
+  <rect x="700" y="340" width="240" height="160" rx="8" class="box-bad"/>
+  <text x="720" y="368" class="h2 label-bad">Live systems (NOT used)</text>
+  <text x="720" y="392" class="body" font-style="italic">No call to:</text>
+  <text x="720" y="410" class="body">  • External policy APIs</text>
+  <text x="720" y="428" class="body">  • Live RAG retrieval</text>
+  <text x="720" y="446" class="body">  • Live ledger / origination</text>
+  <text x="720" y="464" class="body">  • Current system clocks</text>
+  <text x="720" y="486" class="body">  • Mutable reference data</text>
+
+  <!-- Big red X line from frozen artifact to live systems -->
+  <line x1="510" y1="290" x2="700" y2="400" stroke="#dc2626" stroke-width="2" stroke-dasharray="6 4"/>
+  <line x1="535" y1="320" x2="720" y2="375" stroke="#dc2626" stroke-width="2" opacity="0"/>
+
+  <text x="595" y="340" class="body label-bad" text-anchor="middle">✕ never</text>
+
+  <!-- Replay output -->
+  <rect x="40" y="340" width="600" height="160" rx="8" class="box"/>
+  <text x="60" y="368" class="h2">Replay output (the replay bundle)</text>
+  <text x="60" y="392" class="body">• State history at T0</text>
+  <text x="60" y="410" class="body">• Rules evaluated at T0</text>
+  <text x="60" y="428" class="body">• Rule engine result at T0 + replay re-run result</text>
+  <text x="60" y="446" class="body">• Policy result at T0 + replay re-run policy result</text>
+  <text x="60" y="464" class="body">• Evidence snapshot at T0</text>
+  <text x="60" y="482" class="body">• Decision status at T0 + drift classification (none / minor / moderate / critical)</text>
+
+  <line x1="820" y1="280" x2="640" y2="340" stroke="#1f2937" stroke-width="1" stroke-dasharray="4 3"/>
+  <text x="730" y="305" class="body" font-style="italic">produces</text>
+
+  <!-- Why this matters -->
+  <rect x="40" y="540" width="1120" height="120" rx="8" fill="#f9fafb" stroke="#e5e7eb"/>
+  <text x="60" y="568" class="h2">Why this matters</text>
+  <text x="60" y="592" class="body">A regulator, ombudsman, or auditor asking "show me how this decision was made" needs to see what was in front of the human at the moment they approved.</text>
+  <text x="60" y="610" class="body">Live re-runs against current systems would not answer that question — by the time the question is asked, the systems and the evidence have moved on.</text>
+  <text x="60" y="628" class="body">Replay against frozen evidence is the only honest answer to that question. It is locked in as a non-negotiable architectural principle.</text>
+  <text x="60" y="646" class="body" font-style="italic" fill="#6b7280">Pilot-stage scope. Verification that every Trust dashboard surface is fed exclusively from backend evidence remains a pilot-progression item.</text>
+
+  <!-- Footer -->
+  <text x="60" y="697" class="footer" font-style="italic">tracelogic-governance-showcase / diagrams / evidence-replay-flow.svg</text>
+</svg>

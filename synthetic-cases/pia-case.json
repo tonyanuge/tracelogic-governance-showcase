@@ -1,0 +1,99 @@
+{
+  "_synthetic_data_disclaimer": "This is a synthetic illustrative case. All values are fictional. Not for production use. Not derived from real customer data.",
+
+  "case_metadata": {
+    "case_id": "SYN-MORT-0004",
+    "case_type": "pia_linked_modification",
+    "jurisdiction": "IE",
+    "policy_mode": "internal",
+    "submission_timestamp": "2026-05-04T11:42:18Z",
+    "submitted_by_role": "operator",
+    "synthetic": true
+  },
+
+  "borrower": {
+    "name": "Robin Doyle",
+    "vulnerability_flag": false,
+    "engagement_status": "cooperating",
+    "preferred_contact_method": "post",
+    "represented_by_personal_insolvency_practitioner": true
+  },
+
+  "loan_state": {
+    "account_reference": "SYN-MORT-0004",
+    "lender": "Generic Lender plc",
+    "current_balance_eur": 312000,
+    "monthly_repayment_eur": 1620,
+    "current_rate_pct": 4.85,
+    "remaining_term_months": 192,
+    "maturity_date": "2042-05-04",
+    "arrears_balance_eur": 18400,
+    "arrears_age_months": 22,
+    "in_marp": true,
+    "marp_step": "step_4_appeals_or_alternative",
+    "long_term_arrears": true
+  },
+
+  "proposed_treatment": {
+    "treatment_type": "pia_linked_modification",
+    "rationale": "Borrower is engaged in a Personal Insolvency Arrangement (PIA) process under the Insolvency Service of Ireland. Proposed loan modification is contingent on PIA confirmation by the relevant court / Insolvency Service of Ireland / creditor process.",
+    "modification_terms_summary": "Restructure terms set out in the PIA proposal — including a write-down element, a revised payment schedule, and a defined review point."
+  },
+
+  "proposal_governance_evidence": {
+    "no_ara_offered": false,
+    "borrower_acceptance_required": true,
+    "borrower_acceptance_received": false,
+    "court_or_isi_dependency": true,
+    "court_or_isi_confirmation_captured": false,
+    "lifecycle_status": "AWAITING_LEGAL_CONFIRMATION"
+  },
+
+  "standard_financial_statement": {
+    "monthly_net_income_eur": 2280,
+    "monthly_essential_outgoings_eur": 1920,
+    "monthly_disposable_income_eur": 360,
+    "current_payment_to_income_ratio_pct": 71.0,
+    "post_pia_proposed_payment_eur": 980,
+    "post_modification_payment_to_income_ratio_pct": 42.9,
+    "sfs_date": "2026-04-29"
+  },
+
+  "expected_evaluation_summary": {
+    "_note": "This is what TraceLogic's deterministic engine would produce for this case. Provided for illustration only.",
+    "expected_outcome": "APPROVE_PENDING_EXECUTION_GATE",
+    "expected_rule_path_excerpt": [
+      "pia:represented_by_pip",
+      "pia:isi_engagement_active",
+      "affordability:sfs_present",
+      "affordability:post_mod_pti_above_threshold_with_pia_override",
+      "marp:step_appropriate"
+    ],
+    "expected_boundary_analysis_excerpt": [
+      {
+        "rule": "post_modification_pti_threshold",
+        "actual_value": 42.9,
+        "threshold_value": 40.0,
+        "distance_to_threshold": -2.9,
+        "proximity_flag": "AMBER"
+      }
+    ],
+    "expected_breaches": [
+      "post_modification_pti_above_standard_threshold (overridden by PIA route policy)"
+    ],
+    "expected_hard_stops": [],
+    "expected_proposal_governance_block": true,
+    "expected_proposal_governance_blocked_reasons": [
+      "Borrower acceptance has not been recorded after offer",
+      "Court / ISI / creditor confirmation has not been captured for the PIA route"
+    ]
+  },
+
+  "lifecycle_status": "PENDING_REVIEW",
+
+  "governance_notes": [
+    "This case demonstrates the proposal-governance gate: the decision is technically approved (with PIA override) but execution is blocked because borrower acceptance and ISI confirmation have not been captured.",
+    "The proposal-governance gate treats borrower acceptance, court / ISI / creditor confirmation, and the No-ARA-offered state as execution-readiness controls — not cosmetic fields.",
+    "When all gating evidence is captured, execution becomes available; until then, the artifact remains in an awaiting-legal-confirmation state."
+  ]
+}
