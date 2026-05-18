@@ -188,9 +188,7 @@ ASCII overview is above. Higher-resolution diagrams (PNG) are in [`diagrams/`](d
 
 ## Short demo video link
 
-A short walkthrough video showing the lifecycle end-to-end on a synthetic case is available on request. Reach out via the contact below for a private viewing link.
-
-> *No public video link is published in this repository to avoid uncontrolled distribution. The video shows synthetic data only.*
+A short walkthrough video showing the lifecycle end-to-end on a synthetic case is available here -> https://youtu.be/T2KwGhYSVwg
 
 ---
 
